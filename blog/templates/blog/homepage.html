@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 {% for post in posts %}
 <article>
-    <a href="{% url 'post_detail' pk=post.id %}"><h2>{{ post.title }}</h2></a>
+    <h2>{{ post.title }}</h2>
     <h3>{{ post.date }}</h3>
-    <p class="alert alert-success">{{ post.text|safe }}</p>
+    <p class="alert alert-success">{{ post.text|striptags|truncatechars:250 }}<a href="{% url 'post_detail' pk=post.id %}">see more</a></p>
 </article>
 {% endfor %}
 {% endblock content %}
