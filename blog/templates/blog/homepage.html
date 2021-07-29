@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% for post in posts %}
+<article>
+    <a href="{% url 'post_detail' pk=post.id %}"><h2>{{ post.title }}</h2></a>
+    <h3>{{ post.date }}</h3>
+    <p class="alert alert-success">{{ post.text|safe }}</p>
+</article>
+{% endfor %}
+{% endblock content %}
